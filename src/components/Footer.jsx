@@ -54,7 +54,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-primary-900 border-t border-gold-500/20">
+    <footer className="bg-white border-t border-[#E2E8F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <motion.div
           variants={containerVariants}
@@ -66,12 +66,12 @@ export default function Footer() {
           {/* Brand */}
           <motion.div variants={itemVariants} className="space-y-4">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-gold-300 to-gold-500 rounded-lg flex items-center justify-center">
-                <span className="text-primary-900 font-bold">AR</span>
+              <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold">AR</span>
               </div>
-              <span className="text-xl font-serif font-bold">Al-Ridwan</span>
+              <span className="text-xl font-serif font-bold text-[#0F172A]">Al-Ridwan</span>
             </div>
-            <p className="text-gray-400 leading-relaxed">
+            <p className="text-[#64748B] leading-relaxed">
               Premium construction solutions for commercial, residential, and
               infrastructure projects across the region.
             </p>
@@ -82,8 +82,8 @@ export default function Footer() {
                   <motion.a
                     key={index}
                     href={social.url}
-                    whileHover={{ scale: 1.2, color: "#d4af37" }}
-                    className="w-10 h-10 rounded-full border border-gold-500/30 flex items-center justify-center text-gold-300 hover:border-gold-500 transition-colors"
+                    whileHover={{ scale: 1.2 }}
+                    className="w-10 h-10 rounded-full border border-[#E2E8F0] flex items-center justify-center text-[#64748B] hover:border-primary-600 hover:text-primary-600 transition-all"
                     title={social.label}
                   >
                     <Icon />
@@ -95,16 +95,16 @@ export default function Footer() {
 
           {/* Quick Links */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <h4 className="font-serif font-bold text-white text-lg">Quick Links</h4>
+            <h4 className="font-serif font-bold text-[#0F172A] text-lg">Quick Links</h4>
             <div className="space-y-2">
               {quickLinks.map((link, index) => (
                 <motion.a
                   key={index}
                   href={link.href}
                   whileHover={{ x: 5 }}
-                  className="text-gray-400 hover:text-gold-300 transition-colors flex items-center space-x-2"
+                  className="text-[#64748B] hover:text-primary-600 transition-colors flex items-center space-x-2"
                 >
-                  <FaArrowRight className="text-xs" />
+                  <FaArrowRight className="text-xs text-primary-400" />
                   <span>{link.label}</span>
                 </motion.a>
               ))}
@@ -113,16 +113,16 @@ export default function Footer() {
 
           {/* Services */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <h4 className="font-serif font-bold text-white text-lg">Services</h4>
+            <h4 className="font-serif font-bold text-[#0F172A] text-lg">Services</h4>
             <div className="space-y-2">
               {services.map((service, index) => (
                 <motion.a
                   key={index}
                   href="#services"
                   whileHover={{ x: 5 }}
-                  className="text-gray-400 hover:text-gold-300 transition-colors flex items-center space-x-2"
+                  className="text-[#64748B] hover:text-primary-600 transition-colors flex items-center space-x-2"
                 >
-                  <FaArrowRight className="text-xs" />
+                  <FaArrowRight className="text-xs text-primary-400" />
                   <span>{service}</span>
                 </motion.a>
               ))}
@@ -131,17 +131,17 @@ export default function Footer() {
 
           {/* Newsletter */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <h4 className="font-serif font-bold text-white text-lg">
+            <h4 className="font-serif font-bold text-[#0F172A] text-lg">
               Newsletter
             </h4>
-            <p className="text-gray-400">
+            <p className="text-[#64748B]">
               Subscribe to get updates on our latest projects and services.
             </p>
             <form className="flex flex-col space-y-2">
               <input
                 type="email"
                 placeholder="Your email"
-                className="px-4 py-2 rounded-lg bg-primary-900/50 border border-gold-500/30 text-white placeholder-gray-500 focus:outline-none focus:border-gold-500 transition-colors"
+                className="px-4 py-2 rounded-xl bg-white border border-[#E2E8F0] text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-50 transition-all"
               />
               <button className="btn-primary">Subscribe</button>
             </form>
@@ -149,7 +149,7 @@ export default function Footer() {
         </motion.div>
 
         {/* Divider */}
-        <div className="border-t border-gold-500/20 my-12" />
+        <div className="border-t border-[#E2E8F0] my-12" />
 
         {/* Bottom Section */}
         <motion.div
@@ -159,25 +159,25 @@ export default function Footer() {
           transition={{ duration: 0.6 }}
           className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
         >
-          <p className="text-gray-500 text-sm">
+          <p className="text-[#94A3B8] text-sm">
             &copy; {currentYear} Al-Ridwan Construction. All rights reserved.
           </p>
           <div className="flex space-x-6 text-sm">
             <a
               href="#"
-              className="text-gray-400 hover:text-gold-300 transition-colors"
+              className="text-[#64748B] hover:text-primary-600 transition-colors"
             >
               Privacy Policy
             </a>
             <a
               href="#"
-              className="text-gray-400 hover:text-gold-300 transition-colors"
+              className="text-[#64748B] hover:text-primary-600 transition-colors"
             >
               Terms of Service
             </a>
             <a
               href="#"
-              className="text-gray-400 hover:text-gold-300 transition-colors"
+              className="text-[#64748B] hover:text-primary-600 transition-colors"
             >
               Sitemap
             </a>
@@ -190,7 +190,7 @@ export default function Footer() {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-gold-500 text-primary-900 flex items-center justify-center shadow-lg hover:bg-gold-400 transition-colors hidden md:flex"
+        className="fixed bottom-8 right-8 w-12 h-12 rounded-full bg-primary-600 text-white flex items-center justify-center shadow-lg hover:bg-primary-700 transition-colors hidden md:flex"
       >
         ↑
       </motion.button>

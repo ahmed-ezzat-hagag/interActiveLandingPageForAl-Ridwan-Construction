@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { FaPhone, FaWhatsapp, FaArrowRight } from "react-icons/fa"
+import { FaPhone, FaWhatsapp, FaArrowRight, FaCheckCircle } from "react-icons/fa"
 
 export default function Hero() {
   const containerVariants = {
@@ -30,17 +30,16 @@ export default function Hero() {
   ]
 
   return (
-    <div id="hero" className="relative min-h-screen pt-20 overflow-hidden">
-      {/* Background */}
+    <div id="hero" className="relative min-h-screen pt-20 overflow-hidden bg-gradient-to-br from-primary-50 via-white to-white">
+      {/* Subtle Pattern Background */}
       <div className="absolute inset-0 z-0">
         <div
-          className="absolute inset-0 opacity-40"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
-              "url('data:image/svg+xml,%3Csvg width=%2260%27 height=%2760%27 viewBox=%270 0 60 60%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cg fill=%27%23d4af37%27 fill-opacity=%270.05%27%3E%3Cpath d=%27M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+              "url('data:image/svg+xml,%3Csvg width=%2260%27 height=%2760%27 viewBox=%270 0 60 60%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Cg fill=%27none%27 fill-rule=%27evenodd%27%3E%3Cg fill=%27%232563EB%27 fill-opacity=%271%27%3E%3Cpath d=%27M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z%27/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-900/95 to-primary-900" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
@@ -55,16 +54,16 @@ export default function Hero() {
             <div className="space-y-4">
               <motion.p
                 variants={itemVariants}
-                className="text-gold-300 font-semibold text-lg"
+                className="text-primary-600 font-semibold text-lg"
               >
                 Premium Construction Excellence
               </motion.p>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight">
-                <span className="text-white">Building Your </span>
-                <span className="gradient-text">Dreams</span>
-                <span className="text-white"> with Precision</span>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight text-[#0F172A]">
+                Building Your{" "}
+                <span className="text-primary-600">Dreams</span>
+                {" "}with Precision
               </h1>
-              <p className="text-gray-300 text-lg leading-relaxed max-w-lg">
+              <p className="text-[#475569] text-lg leading-relaxed max-w-lg">
                 Transform your vision into reality with Al-Ridwan's world-class
                 construction services. From concept to completion, we deliver
                 excellence in every detail.
@@ -97,13 +96,13 @@ export default function Hero() {
                 {[1, 2, 3].map((i) => (
                   <div
                     key={i}
-                    className="w-10 h-10 rounded-full bg-gradient-to-br from-gold-300 to-gold-500 border-2 border-primary-900 flex items-center justify-center text-primary-900 font-bold"
+                    className="w-10 h-10 rounded-full bg-primary-100 border-2 border-white flex items-center justify-center text-primary-600 font-bold text-sm"
                   >
                     {i}
                   </div>
                 ))}
               </div>
-              <p className="text-gray-400">
+              <p className="text-[#64748B]">
                 Trusted by 500+ satisfied clients
               </p>
             </motion.div>
@@ -114,21 +113,21 @@ export default function Hero() {
             variants={itemVariants}
             className="relative"
           >
-            <div className="relative w-full aspect-square rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-gold-500/40 to-primary-900/40" />
+            <div className="relative w-full aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-primary-100 to-white border border-[#E2E8F0] shadow-xl">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="text-6xl font-serif font-bold text-gold-300 mb-4">
-                    AR
+                  <div className="w-24 h-24 bg-primary-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <span className="text-white text-4xl font-bold">AR</span>
                   </div>
-                  <p className="text-xl text-gray-300">
+                  <p className="text-xl text-[#475569] font-semibold">
                     Al-Ridwan Construction
                   </p>
+                  <p className="text-[#64748B] mt-2">Engineering Excellence</p>
                 </div>
               </div>
               {/* Decorative Elements */}
-              <div className="absolute -top-20 -right-20 w-40 h-40 bg-gold-500/20 rounded-full blur-3xl" />
-              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-gold-500/10 rounded-full blur-3xl" />
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary-100 rounded-full blur-3xl" />
+              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-primary-50 rounded-full blur-3xl" />
             </div>
           </motion.div>
         </motion.div>
@@ -138,18 +137,18 @@ export default function Hero() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-20"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-20"
         >
           {stats.map((stat, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="glass-effect p-6 text-center hover:bg-white/20 transition-all"
+              className="bg-white border border-[#E2E8F0] rounded-xl p-6 text-center shadow-sm hover:shadow-lg transition-all hover:-translate-y-1"
             >
-              <div className="text-3xl md:text-4xl font-bold text-gold-300 mb-2">
+              <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">
                 {stat.number}
               </div>
-              <p className="text-gray-300 text-sm">{stat.label}</p>
+              <p className="text-[#475569] text-sm">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
@@ -161,8 +160,8 @@ export default function Hero() {
         transition={{ duration: 2, repeat: Infinity }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
-        <div className="w-6 h-10 border-2 border-gold-300 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-2 bg-gold-300 rounded-full animate-pulse" />
+        <div className="w-6 h-10 border-2 border-primary-400 rounded-full flex items-start justify-center p-2">
+          <div className="w-1 h-2 bg-primary-400 rounded-full animate-pulse" />
         </div>
       </motion.div>
     </div>
