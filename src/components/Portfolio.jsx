@@ -77,7 +77,7 @@ export default function Portfolio() {
       : projects.filter((p) => p.category === activeCategory)
 
   return (
-    <section id="portfolio" className="py-20 bg-primary-900">
+    <section id="portfolio" className="py-24 bg-[#F8FAFC]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -87,7 +87,7 @@ export default function Portfolio() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-gold-300 font-semibold text-lg mb-4">Portfolio</p>
+          <p className="text-primary-600 font-semibold text-lg mb-4">Portfolio</p>
           <h2 className="section-title">Featured Projects</h2>
           <p className="section-subtitle">
             Explore our portfolio of exceptional construction projects
@@ -108,8 +108,8 @@ export default function Portfolio() {
               onClick={() => setActiveCategory(cat)}
               className={`flex items-center space-x-2 px-6 py-2 rounded-full font-semibold transition-all ${
                 activeCategory === cat
-                  ? "bg-gold-500 text-primary-900"
-                  : "bg-primary-900 border-2 border-gold-500 text-gold-300 hover:bg-gold-500 hover:text-primary-900"
+                  ? "bg-primary-600 text-white shadow-md"
+                  : "bg-white border-2 border-[#E2E8F0] text-[#475569] hover:border-primary-600 hover:text-primary-600"
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -137,27 +137,27 @@ export default function Portfolio() {
             >
               <motion.div
                 whileHover={{ y: -8 }}
-                className="relative rounded-xl overflow-hidden card-hover cursor-pointer"
+                className="relative rounded-xl overflow-hidden card-hover bg-white border border-[#E2E8F0] shadow-sm"
               >
                 {/* Image */}
-                <div className="relative h-72 bg-gradient-to-br from-gold-500/40 via-primary-900/40 to-primary-900/40 flex items-center justify-center overflow-hidden">
+                <div className="relative h-72 bg-gradient-to-br from-primary-50 to-white flex items-center justify-center overflow-hidden">
                   <div className="text-8xl transform group-hover:scale-110 transition-transform duration-500">
                     {project.image}
                   </div>
 
                   {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary-900 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                 </div>
 
                 {/* Content */}
-                <div className="p-6 bg-primary-900/50 backdrop-blur-sm border-t border-gold-500/20">
-                  <p className="text-gold-300 text-sm mb-2">{project.location}</p>
-                  <h3 className="text-xl font-serif font-bold text-white mb-4 group-hover:text-gold-300 transition-colors">
+                <div className="p-6 bg-white">
+                  <p className="text-primary-600 text-sm mb-2 font-medium">{project.location}</p>
+                  <h3 className="text-xl font-serif font-bold text-[#0F172A] mb-4 group-hover:text-primary-600 transition-colors">
                     {project.title}
                   </h3>
                   <motion.button
                     whileHover={{ x: 5 }}
-                    className="text-gold-300 font-semibold text-sm flex items-center space-x-2"
+                    className="text-primary-600 font-semibold text-sm flex items-center space-x-2"
                   >
                     <span>View Project</span>
                     <span>→</span>

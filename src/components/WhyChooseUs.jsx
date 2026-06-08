@@ -45,7 +45,7 @@ export default function WhyChooseUs() {
   ]
 
   return (
-    <section className="py-20 bg-gradient-to-b from-primary-900 to-primary-900">
+    <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -55,7 +55,7 @@ export default function WhyChooseUs() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-gold-300 font-semibold text-lg mb-4">Why Choose Us</p>
+          <p className="text-primary-600 font-semibold text-lg mb-4">Why Choose Us</p>
           <h2 className="section-title">Your Trusted Construction Partner</h2>
           <p className="section-subtitle">
             Discover what makes Al-Ridwan the preferred choice for premium construction
@@ -76,28 +76,28 @@ export default function WhyChooseUs() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ y: -10 }}
+                whileHover={{ y: -8 }}
                 className="group"
               >
-                <div className="glass-effect p-8 h-full text-center card-hover">
+                <div className="bg-white border border-[#E2E8F0] rounded-xl p-8 h-full text-center shadow-sm card-hover">
                   {/* Icon */}
                   <div className="mb-6 inline-block">
                     <motion.div
                       whileHover={{ rotate: 360 }}
                       transition={{ duration: 0.6 }}
-                      className="w-20 h-20 bg-gradient-to-br from-gold-300 to-gold-500 rounded-full flex items-center justify-center group-hover:shadow-lg group-hover:shadow-gold-500/50 transition-all"
+                      className="w-20 h-20 bg-accent-50 rounded-full flex items-center justify-center group-hover:bg-accent-100 transition-colors"
                     >
-                      <Icon className="text-primary-900 text-3xl" />
+                      <Icon className="text-accent-500 text-3xl" />
                     </motion.div>
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-serif font-bold mb-3 text-white">
+                  <h3 className="text-xl font-serif font-bold mb-3 text-[#0F172A]">
                     {reason.title}
                   </h3>
 
                   {/* Description */}
-                  <p className="text-gray-400 leading-relaxed">
+                  <p className="text-[#475569] leading-relaxed">
                     {reason.description}
                   </p>
                 </div>
@@ -112,12 +112,12 @@ export default function WhyChooseUs() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
           viewport={{ once: true }}
-          className="mt-16 glass-effect p-12 text-center rounded-2xl"
+          className="mt-16 bg-primary-600 rounded-2xl p-12 text-center shadow-lg"
         >
           <h3 className="text-3xl font-serif font-bold mb-4 text-white">
             Commitment to Excellence
           </h3>
-          <p className="text-gray-300 text-lg max-w-3xl mx-auto leading-relaxed">
+          <p className="text-primary-100 text-lg max-w-3xl mx-auto leading-relaxed">
             At Al-Ridwan, we don't just build structures—we create lasting legacies.
             Every project reflects our dedication to innovation, sustainability, and
             client satisfaction. With our experienced team and proven methodology, we

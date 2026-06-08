@@ -63,7 +63,7 @@ export default function Testimonials() {
   }
 
   return (
-    <section className="py-20 bg-gradient-to-b from-primary-900 to-primary-900">
+    <section className="py-24 bg-[#F8FAFC]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
@@ -73,7 +73,7 @@ export default function Testimonials() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-gold-300 font-semibold text-lg mb-4">
+          <p className="text-primary-600 font-semibold text-lg mb-4">
             Client Testimonials
           </p>
           <h2 className="section-title">What Our Clients Say</h2>
@@ -83,9 +83,9 @@ export default function Testimonials() {
         </motion.div>
 
         {/* Testimonial Slider */}
-        <div className="relative">
+        <div className="relative max-w-3xl mx-auto">
           {/* Testimonial Cards */}
-          <div className="relative h-96">
+          <div className="relative h-80">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
@@ -100,29 +100,29 @@ export default function Testimonials() {
                   index === currentIndex ? "pointer-events-auto" : "pointer-events-none"
                 }`}
               >
-                <div className="glass-effect p-12 h-full flex flex-col justify-center rounded-2xl">
+                <div className="bg-white border border-[#E2E8F0] rounded-2xl p-12 h-full flex flex-col justify-center shadow-sm">
                   {/* Stars */}
                   <div className="flex gap-1 mb-6">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <FaStar key={i} className="text-gold-300" />
+                      <FaStar key={i} className="text-accent-500" />
                     ))}
                   </div>
 
                   {/* Text */}
-                  <p className="text-gray-300 text-lg mb-8 leading-relaxed italic">
+                  <p className="text-[#475569] text-lg mb-8 leading-relaxed italic">
                     "{testimonial.text}"
                   </p>
 
                   {/* Author */}
                   <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 bg-gradient-to-br from-gold-300 to-gold-500 rounded-full flex items-center justify-center text-3xl">
+                    <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center text-3xl">
                       {testimonial.image}
                     </div>
                     <div>
-                      <p className="font-serif font-bold text-white">
+                      <p className="font-serif font-bold text-[#0F172A]">
                         {testimonial.name}
                       </p>
-                      <p className="text-gold-300 text-sm">{testimonial.role}</p>
+                      <p className="text-primary-600 text-sm">{testimonial.role}</p>
                     </div>
                   </div>
                 </div>
@@ -135,7 +135,7 @@ export default function Testimonials() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={goToPrevious}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 z-10 w-12 h-12 rounded-full bg-gold-500 text-primary-900 flex items-center justify-center hover:bg-gold-400 transition-colors hidden md:flex"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-20 z-10 w-12 h-12 rounded-full bg-white border border-[#E2E8F0] text-primary-600 flex items-center justify-center hover:bg-primary-50 hover:border-primary-600 transition-all shadow-sm hidden md:flex"
           >
             <FaChevronLeft />
           </motion.button>
@@ -143,7 +143,7 @@ export default function Testimonials() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 z-10 w-12 h-12 rounded-full bg-gold-500 text-primary-900 flex items-center justify-center hover:bg-gold-400 transition-colors hidden md:flex"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-20 z-10 w-12 h-12 rounded-full bg-white border border-[#E2E8F0] text-primary-600 flex items-center justify-center hover:bg-primary-50 hover:border-primary-600 transition-all shadow-sm hidden md:flex"
           >
             <FaChevronRight />
           </motion.button>
@@ -157,10 +157,10 @@ export default function Testimonials() {
                   setCurrentIndex(index)
                   setAutoplay(false)
                 }}
-                className={`w-3 h-3 rounded-full transition-all ${
+                className={`h-3 rounded-full transition-all ${
                   index === currentIndex
-                    ? "bg-gold-300 w-8"
-                    : "bg-gray-600 hover:bg-gray-500"
+                    ? "bg-primary-600 w-8"
+                    : "bg-[#E2E8F0] w-3 hover:bg-primary-400"
                 }`}
                 whileHover={{ scale: 1.2 }}
               />
@@ -174,19 +174,19 @@ export default function Testimonials() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           viewport={{ once: true }}
-          className="grid grid-cols-3 gap-8 mt-20"
+          className="grid grid-cols-3 gap-8 mt-20 max-w-2xl mx-auto"
         >
           <div className="text-center">
-            <p className="text-4xl font-bold text-gold-300 mb-2">98%</p>
-            <p className="text-gray-400">Client Satisfaction</p>
+            <p className="text-4xl font-bold text-primary-600 mb-2">98%</p>
+            <p className="text-[#64748B]">Client Satisfaction</p>
           </div>
           <div className="text-center">
-            <p className="text-4xl font-bold text-gold-300 mb-2">500+</p>
-            <p className="text-gray-400">Happy Clients</p>
+            <p className="text-4xl font-bold text-primary-600 mb-2">500+</p>
+            <p className="text-[#64748B]">Happy Clients</p>
           </div>
           <div className="text-center">
-            <p className="text-4xl font-bold text-gold-300 mb-2">4.9/5</p>
-            <p className="text-gray-400">Average Rating</p>
+            <p className="text-4xl font-bold text-primary-600 mb-2">4.9/5</p>
+            <p className="text-[#64748B]">Average Rating</p>
           </div>
         </motion.div>
       </div>

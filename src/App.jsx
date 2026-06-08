@@ -14,7 +14,7 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <div className="bg-primary-900 text-white">
+    <div className="bg-white text-[#475569]">
       <Navbar isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
       <Hero />
       <About />

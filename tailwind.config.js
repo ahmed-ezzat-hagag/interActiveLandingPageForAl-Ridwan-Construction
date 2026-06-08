@@ -8,22 +8,21 @@ export default {
     extend: {
       colors: {
         primary: {
-          50: "#f8f9fa",
-          100: "#f0f2f5",
-          900: "#1a1f2e",
+          50: "#EFF6FF",
+          100: "#DBEAFE",
+          200: "#BFDBFE",
+          400: "#60A5FA",
+          500: "#3B82F6",
+          600: "#2563EB",
+          700: "#1D4ED8",
         },
-        gold: {
-          300: "#d4af37",
-          400: "#c9a961",
-          500: "#b8860b",
+        accent: {
+          50: "#FFFBEB",
+          100: "#FEF3C7",
+          400: "#FBBF24",
+          500: "#F59E0B",
+          600: "#D97706",
         },
-        accent: "#f39c12",
-      },
-      backgroundColor: {
-        "primary-900": "#1a1f2e",
-      },
-      textColor: {
-        "primary-900": "#1a1f2e",
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
