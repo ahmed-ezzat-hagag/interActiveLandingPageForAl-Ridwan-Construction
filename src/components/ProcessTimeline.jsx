@@ -1,7 +1,10 @@
 import { motion } from "framer-motion"
 import { FaCompass, FaRuler, FaHammer, FaCheckCircle } from "react-icons/fa"
+import { useLanguage } from "../context/LanguageContext"
 
 export default function ProcessTimeline() {
+  const { t } = useLanguage()
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -21,32 +24,7 @@ export default function ProcessTimeline() {
     },
   }
 
-  const steps = [
-    {
-      icon: FaCompass,
-      number: "01",
-      title: "Planning & Design",
-      description: "We start with comprehensive planning, understanding your vision, and creating detailed designs tailored to your needs.",
-    },
-    {
-      icon: FaRuler,
-      number: "02",
-      title: "Consultation & Approval",
-      description: "Our team consults with you, refines designs, obtains necessary permits, and gets your final approval.",
-    },
-    {
-      icon: FaHammer,
-      number: "03",
-      title: "Construction & Execution",
-      description: "We begin construction with skilled workers, quality materials, and strict adherence to safety standards.",
-    },
-    {
-      icon: FaCheckCircle,
-      number: "04",
-      title: "Completion & Handover",
-      description: "Final inspections, quality checks, and smooth handover with comprehensive documentation and warranty.",
-    },
-  ]
+  const icons = [FaCompass, FaRuler, FaHammer, FaCheckCircle]
 
   return (
     <section className="py-24 bg-white">
@@ -59,10 +37,10 @@ export default function ProcessTimeline() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <p className="text-primary-600 font-semibold text-lg mb-4">Our Process</p>
-          <h2 className="section-title">Construction Workflow</h2>
+          <p className="text-primary-600 font-semibold text-lg mb-4">{t.process.badge}</p>
+          <h2 className="section-title">{t.process.title}</h2>
           <p className="section-subtitle">
-            A proven 4-step process ensuring excellence at every stage
+            {t.process.subtitle}
           </p>
         </motion.div>
 
@@ -80,8 +58,8 @@ export default function ProcessTimeline() {
 
           {/* Steps Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {steps.map((step, index) => {
-              const Icon = step.icon
+            {t.process.steps.map((step, index) => {
+              const Icon = icons[index]
               return (
                 <motion.div
                   key={index}
@@ -93,14 +71,14 @@ export default function ProcessTimeline() {
                     {/* Step Number */}
                     <div className="flex items-center justify-between mb-6">
                       <div className="text-5xl font-bold text-[#E2E8F0]">
-                        {step.number}
+                        {String(index + 1).padStart(2, "0")}
                       </div>
                       <div className="relative">
                         <div className="w-16 h-16 bg-primary-50 rounded-full flex items-center justify-center">
                           <Icon className="text-primary-600 text-xl" />
                         </div>
                         {/* Connecting Dot */}
-                        {index < steps.length - 1 && (
+                        {index < t.process.steps.length - 1 && (
                           <div className="hidden lg:block absolute -right-[3.25rem] top-1/2 -translate-y-1/2 w-4 h-4 bg-primary-600 border-4 border-white rounded-full shadow-sm" />
                         )}
                       </div>
@@ -116,9 +94,9 @@ export default function ProcessTimeline() {
                   </div>
 
                   {/* Arrow for mobile/tablet */}
-                  {index < steps.length - 1 && (
+                  {index < t.process.steps.length - 1 && (
                     <div className="lg:hidden text-center mt-4 text-primary-400">
-                      ↓
+                      {index < t.process.steps.length - 1 ? "↓" : ""}
                     </div>
                   )}
                 </motion.div>
@@ -136,9 +114,9 @@ export default function ProcessTimeline() {
           className="text-center mt-20"
         >
           <p className="text-[#475569] text-lg mb-6">
-            Ready to start your construction project? Let's discuss your requirements.
+            {t.process.ctaText}
           </p>
-          <button className="btn-accent">Schedule Consultation</button>
+          <button className="btn-accent">{t.process.ctaButton}</button>
         </motion.div>
       </div>
     </section>

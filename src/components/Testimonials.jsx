@@ -1,45 +1,17 @@
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
 import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa"
+import { useLanguage } from "../context/LanguageContext"
 
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [autoplay, setAutoplay] = useState(true)
+  const { t, lang } = useLanguage()
 
-  const testimonials = [
-    {
-      id: 1,
-      name: "Ahmed Hassan",
-      role: "CEO, Hassan Industries",
-      rating: 5,
-      text: "Al-Ridwan delivered our office building on time and exceeded our expectations. Professional team and outstanding quality!",
-      image: "👨‍💼",
-    },
-    {
-      id: 2,
-      name: "Fatima Al-Mansouri",
-      role: "Property Owner",
-      rating: 5,
-      text: "Incredible craftsmanship and attention to detail. They transformed our vision into a stunning residential complex.",
-      image: "👩‍💼",
-    },
-    {
-      id: 3,
-      name: "Mohammed Al-Rashid",
-      role: "Project Manager",
-      rating: 5,
-      text: "Working with Al-Ridwan was seamless. Their expertise in project management and communication was exceptional.",
-      image: "👨‍💼",
-    },
-    {
-      id: 4,
-      name: "Sarah Al-Zahra",
-      role: "Interior Designer",
-      rating: 5,
-      text: "They brought my designs to life perfectly. Their team understood the vision and executed it flawlessly.",
-      image: "👩‍💼",
-    },
-  ]
+  const testimonials = t.testimonials.list.map((item) => ({
+    ...item,
+    rating: 5,
+  }))
 
   // Auto-scroll
   useEffect(() => {
@@ -74,11 +46,11 @@ export default function Testimonials() {
           className="text-center mb-16"
         >
           <p className="text-primary-600 font-semibold text-lg mb-4">
-            Client Testimonials
+            {t.testimonials.badge}
           </p>
-          <h2 className="section-title">What Our Clients Say</h2>
+          <h2 className="section-title">{t.testimonials.title}</h2>
           <p className="section-subtitle">
-            Don't just take our word for it - hear from our satisfied clients
+            {t.testimonials.subtitle}
           </p>
         </motion.div>
 
@@ -88,7 +60,7 @@ export default function Testimonials() {
           <div className="relative h-80">
             {testimonials.map((testimonial, index) => (
               <motion.div
-                key={testimonial.id}
+                key={testimonial.name}
                 initial={{ opacity: 0, x: 100 }}
                 animate={{
                   opacity: index === currentIndex ? 1 : 0,
@@ -114,9 +86,9 @@ export default function Testimonials() {
                   </p>
 
                   {/* Author */}
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center space-x-4 rtl:space-x-reverse">
                     <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center text-3xl">
-                      {testimonial.image}
+                      👤
                     </div>
                     <div>
                       <p className="font-serif font-bold text-[#0F172A]">
@@ -137,7 +109,7 @@ export default function Testimonials() {
             onClick={goToPrevious}
             className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-20 z-10 w-12 h-12 rounded-full bg-white border border-[#E2E8F0] text-primary-600 flex items-center justify-center hover:bg-primary-50 hover:border-primary-600 transition-all shadow-sm hidden md:flex"
           >
-            <FaChevronLeft />
+            {lang === "ar" ? <FaChevronRight /> : <FaChevronLeft />}
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.1 }}
@@ -145,7 +117,7 @@ export default function Testimonials() {
             onClick={goToNext}
             className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-20 z-10 w-12 h-12 rounded-full bg-white border border-[#E2E8F0] text-primary-600 flex items-center justify-center hover:bg-primary-50 hover:border-primary-600 transition-all shadow-sm hidden md:flex"
           >
-            <FaChevronRight />
+            {lang === "ar" ? <FaChevronLeft /> : <FaChevronRight />}
           </motion.button>
 
           {/* Dots Navigation */}
@@ -178,15 +150,15 @@ export default function Testimonials() {
         >
           <div className="text-center">
             <p className="text-4xl font-bold text-primary-600 mb-2">98%</p>
-            <p className="text-[#64748B]">Client Satisfaction</p>
+            <p className="text-[#64748B]">{t.testimonials.statsSatisfaction}</p>
           </div>
           <div className="text-center">
             <p className="text-4xl font-bold text-primary-600 mb-2">500+</p>
-            <p className="text-[#64748B]">Happy Clients</p>
+            <p className="text-[#64748B]">{t.testimonials.statsClients}</p>
           </div>
           <div className="text-center">
             <p className="text-4xl font-bold text-primary-600 mb-2">4.9/5</p>
-            <p className="text-[#64748B]">Average Rating</p>
+            <p className="text-[#64748B]">{t.testimonials.statsRating}</p>
           </div>
         </motion.div>
       </div>

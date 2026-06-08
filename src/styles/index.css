@@ -19,6 +19,15 @@ body {
   overflow-x: hidden;
 }
 
+[dir="rtl"] body,
+[dir="rtl"] {
+  font-family: "Noto Kufi Arabic", sans-serif;
+}
+
+[dir="rtl"] .font-serif {
+  font-family: "Noto Kufi Arabic", sans-serif;
+}
+
 .font-serif {
   font-family: "Playfair Display", serif;
 }

@@ -1,7 +1,10 @@
 import { motion } from "framer-motion"
 import { FaPhone, FaWhatsapp, FaArrowRight, FaCheckCircle } from "react-icons/fa"
+import { useLanguage } from "../context/LanguageContext"
 
 export default function Hero() {
+  const { t } = useLanguage()
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -23,15 +26,14 @@ export default function Hero() {
   }
 
   const stats = [
-    { number: "500+", label: "Projects Completed" },
-    { number: "15+", label: "Years Experience" },
-    { number: "98%", label: "Client Satisfaction" },
-    { number: "50+", label: "Expert Team" },
+    { number: "500+", label: t.hero.statsProjects },
+    { number: "15+", label: t.hero.statsYears },
+    { number: "98%", label: t.hero.statsSatisfaction },
+    { number: "50+", label: t.hero.statsTeam },
   ]
 
   return (
     <div id="hero" className="relative min-h-screen pt-20 overflow-hidden bg-gradient-to-br from-primary-50 via-white to-white">
-      {/* Subtle Pattern Background */}
       <div className="absolute inset-0 z-0">
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -56,17 +58,15 @@ export default function Hero() {
                 variants={itemVariants}
                 className="text-primary-600 font-semibold text-lg"
               >
-                Premium Construction Excellence
+                {t.hero.badge}
               </motion.p>
               <h1 className="text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight text-[#0F172A]">
-                Building Your{" "}
-                <span className="text-primary-600">Dreams</span>
-                {" "}with Precision
+                {t.hero.heading}
+                <span className="text-primary-600">{t.hero.headingHighlight}</span>
+                {t.hero.headingEnd}
               </h1>
               <p className="text-[#475569] text-lg leading-relaxed max-w-lg">
-                Transform your vision into reality with Al-Ridwan's world-class
-                construction services. From concept to completion, we deliver
-                excellence in every detail.
+                {t.hero.description}
               </p>
             </div>
 
@@ -75,24 +75,24 @@ export default function Hero() {
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
-              <button className="btn-primary inline-flex items-center justify-center space-x-2 group">
-                <span>Get Started</span>
-                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+              <button className="btn-primary inline-flex items-center justify-center space-x-2 rtl:space-x-reverse group">
+                <span>{t.hero.cta}</span>
+                <FaArrowRight className="group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform" />
               </button>
               <a
                 href="https://wa.me/your-phone-number"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary inline-flex items-center justify-center space-x-2"
+                className="btn-secondary inline-flex items-center justify-center space-x-2 rtl:space-x-reverse"
               >
                 <FaWhatsapp />
-                <span>WhatsApp Us</span>
+                <span>{t.hero.whatsapp}</span>
               </a>
             </motion.div>
 
             {/* Trust Badges */}
-            <motion.div variants={itemVariants} className="flex items-center space-x-4 pt-4">
-              <div className="flex -space-x-3">
+            <motion.div variants={itemVariants} className="flex items-center space-x-4 rtl:space-x-reverse pt-4">
+              <div className="flex -space-x-3 rtl:space-x-reverse">
                 {[1, 2, 3].map((i) => (
                   <div
                     key={i}
@@ -103,7 +103,7 @@ export default function Hero() {
                 ))}
               </div>
               <p className="text-[#64748B]">
-                Trusted by 500+ satisfied clients
+                {t.hero.trustText}
               </p>
             </motion.div>
           </motion.div>
@@ -120,12 +120,11 @@ export default function Hero() {
                     <span className="text-white text-4xl font-bold">AR</span>
                   </div>
                   <p className="text-xl text-[#475569] font-semibold">
-                    Al-Ridwan Construction
+                    {t.hero.imageTitle}
                   </p>
-                  <p className="text-[#64748B] mt-2">Engineering Excellence</p>
+                  <p className="text-[#64748B] mt-2">{t.hero.imageSubtitle}</p>
                 </div>
               </div>
-              {/* Decorative Elements */}
               <div className="absolute -top-20 -right-20 w-40 h-40 bg-primary-100 rounded-full blur-3xl" />
               <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-primary-50 rounded-full blur-3xl" />
             </div>
