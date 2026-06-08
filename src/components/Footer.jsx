@@ -6,9 +6,11 @@ import {
   FaTwitter,
   FaArrowRight,
 } from "react-icons/fa"
+import { useLanguage } from "../context/LanguageContext"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
+  const { t, lang } = useLanguage()
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -30,20 +32,11 @@ export default function Footer() {
   }
 
   const quickLinks = [
-    { label: "Home", href: "#hero" },
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Contact", href: "#contact" },
-  ]
-
-  const services = [
-    "Commercial Buildings",
-    "Residential Projects",
-    "Renovation Services",
-    "Project Management",
-    "Infrastructure",
-    "Interior Design",
+    { label: t.nav.home, href: "#hero" },
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.services, href: "#services" },
+    { label: t.nav.portfolio, href: "#portfolio" },
+    { label: t.nav.contact, href: "#contact" },
   ]
 
   const socialLinks = [
@@ -65,17 +58,16 @@ export default function Footer() {
         >
           {/* Brand */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <div className="flex items-center space-x-2 mb-4">
+            <div className="flex items-center space-x-2 rtl:space-x-reverse mb-4">
               <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold">AR</span>
               </div>
               <span className="text-xl font-serif font-bold text-[#0F172A]">Al-Ridwan</span>
             </div>
             <p className="text-[#64748B] leading-relaxed">
-              Premium construction solutions for commercial, residential, and
-              infrastructure projects across the region.
+              {t.footer.brandText}
             </p>
-            <div className="flex space-x-4 pt-4">
+            <div className="flex space-x-4 rtl:space-x-reverse pt-4">
               {socialLinks.map((social, index) => {
                 const Icon = social.icon
                 return (
@@ -95,16 +87,16 @@ export default function Footer() {
 
           {/* Quick Links */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <h4 className="font-serif font-bold text-[#0F172A] text-lg">Quick Links</h4>
+            <h4 className="font-serif font-bold text-[#0F172A] text-lg">{t.footer.quickLinks}</h4>
             <div className="space-y-2">
               {quickLinks.map((link, index) => (
                 <motion.a
                   key={index}
                   href={link.href}
-                  whileHover={{ x: 5 }}
-                  className="text-[#64748B] hover:text-primary-600 transition-colors flex items-center space-x-2"
+                  whileHover={{ x: lang === "ar" ? -5 : 5 }}
+                  className="text-[#64748B] hover:text-primary-600 transition-colors flex items-center space-x-2 rtl:space-x-reverse"
                 >
-                  <FaArrowRight className="text-xs text-primary-400" />
+                  <FaArrowRight className={`text-xs text-primary-400 ${lang === "ar" ? "rotate-180" : ""}`} />
                   <span>{link.label}</span>
                 </motion.a>
               ))}
@@ -113,17 +105,17 @@ export default function Footer() {
 
           {/* Services */}
           <motion.div variants={itemVariants} className="space-y-4">
-            <h4 className="font-serif font-bold text-[#0F172A] text-lg">Services</h4>
+            <h4 className="font-serif font-bold text-[#0F172A] text-lg">{t.footer.services}</h4>
             <div className="space-y-2">
-              {services.map((service, index) => (
+              {t.services.list.map((service, index) => (
                 <motion.a
                   key={index}
                   href="#services"
-                  whileHover={{ x: 5 }}
-                  className="text-[#64748B] hover:text-primary-600 transition-colors flex items-center space-x-2"
+                  whileHover={{ x: lang === "ar" ? -5 : 5 }}
+                  className="text-[#64748B] hover:text-primary-600 transition-colors flex items-center space-x-2 rtl:space-x-reverse"
                 >
-                  <FaArrowRight className="text-xs text-primary-400" />
-                  <span>{service}</span>
+                  <FaArrowRight className={`text-xs text-primary-400 ${lang === "ar" ? "rotate-180" : ""}`} />
+                  <span>{service.title}</span>
                 </motion.a>
               ))}
             </div>
@@ -132,18 +124,18 @@ export default function Footer() {
           {/* Newsletter */}
           <motion.div variants={itemVariants} className="space-y-4">
             <h4 className="font-serif font-bold text-[#0F172A] text-lg">
-              Newsletter
+              {t.footer.newsletter}
             </h4>
             <p className="text-[#64748B]">
-              Subscribe to get updates on our latest projects and services.
+              {t.footer.newsletterText}
             </p>
             <form className="flex flex-col space-y-2">
               <input
                 type="email"
-                placeholder="Your email"
+                placeholder={t.footer.emailPlaceholder}
                 className="px-4 py-2 rounded-xl bg-white border border-[#E2E8F0] text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-50 transition-all"
               />
-              <button className="btn-primary">Subscribe</button>
+              <button className="btn-primary">{t.footer.subscribe}</button>
             </form>
           </motion.div>
         </motion.div>
@@ -160,26 +152,26 @@ export default function Footer() {
           className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0"
         >
           <p className="text-[#94A3B8] text-sm">
-            &copy; {currentYear} Al-Ridwan Construction. All rights reserved.
+            &copy; {currentYear} {t.footer.copyright}
           </p>
-          <div className="flex space-x-6 text-sm">
+          <div className="flex space-x-6 rtl:space-x-reverse text-sm">
             <a
               href="#"
               className="text-[#64748B] hover:text-primary-600 transition-colors"
             >
-              Privacy Policy
+              {t.footer.privacyPolicy}
             </a>
             <a
               href="#"
               className="text-[#64748B] hover:text-primary-600 transition-colors"
             >
-              Terms of Service
+              {t.footer.termsOfService}
             </a>
             <a
               href="#"
               className="text-[#64748B] hover:text-primary-600 transition-colors"
             >
-              Sitemap
+              {t.footer.sitemap}
             </a>
           </div>
         </motion.div>

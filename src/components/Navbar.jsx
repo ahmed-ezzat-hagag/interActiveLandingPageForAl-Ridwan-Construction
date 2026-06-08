@@ -1,9 +1,11 @@
 import { motion } from "framer-motion"
-import { FaBars, FaTimes, FaWhatsapp } from "react-icons/fa"
+import { FaBars, FaTimes, FaWhatsapp, FaGlobe } from "react-icons/fa"
 import { useState, useEffect } from "react"
+import { useLanguage } from "../context/LanguageContext"
 
 export default function Navbar({ isMenuOpen, setIsMenuOpen }) {
   const [scrolled, setScrolled] = useState(false)
+  const { t, toggleLang, lang } = useLanguage()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,11 +16,11 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }) {
   }, [])
 
   const navItems = [
-    { label: "Home", href: "#hero" },
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
-    { label: "Portfolio", href: "#portfolio" },
-    { label: "Contact", href: "#contact" },
+    { label: t.nav.home, href: "#hero" },
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.services, href: "#services" },
+    { label: t.nav.portfolio, href: "#portfolio" },
+    { label: t.nav.contact, href: "#contact" },
   ]
 
   return (
@@ -36,10 +38,10 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }) {
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.05 }}
-            className="flex items-center space-x-2"
+            className="flex items-center space-x-2 rtl:space-x-reverse"
           >
             <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">AR</span>
+              <span className="text-white font-bold text-lg">AR  </span>
             </div>
             <span className={`text-xl font-serif font-bold hidden sm:inline ${scrolled ? "text-[#0F172A]" : "text-white"}`}>
               Al-Ridwan
@@ -47,7 +49,7 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }) {
           </motion.div>
 
           {/* Desktop Menu */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-8 rtl:space-x-reverse">
             {navItems.map((item) => (
               <motion.a
                 key={item.label}
@@ -63,16 +65,30 @@ export default function Navbar({ isMenuOpen, setIsMenuOpen }) {
           </div>
 
           {/* CTA and Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-4 rtl:space-x-reverse">
+            {/* Language Toggle */}
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              onClick={toggleLang}
+              className={`flex items-center space-x-1 rtl:space-x-reverse px-3 py-2 rounded-lg transition-colors ${
+                scrolled
+                  ? "text-[#475569] hover:text-primary-600 border border-[#E2E8F0]"
+                  : "text-white/90 hover:text-white border border-white/30"
+              }`}
+            >
+              <FaGlobe size={14} />
+              <span className="text-sm font-semibold">{lang === "en" ? "AR" : "EN"}</span>
+            </motion.button>
+
             <motion.a
               whileHover={{ scale: 1.05 }}
               href="https://wa.me/your-phone-number"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center space-x-2 px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors"
+              className="hidden sm:flex items-center space-x-2 rtl:space-x-reverse px-4 py-2 bg-green-500 hover:bg-green-600 text-white rounded-lg transition-colors"
             >
               <FaWhatsapp />
-              <span>Chat</span>
+              <span>{t.nav.chat}</span>
             </motion.a>
 
             {/* Mobile Menu Button */}

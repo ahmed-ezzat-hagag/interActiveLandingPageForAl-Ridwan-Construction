@@ -1,7 +1,10 @@
 import { motion } from "framer-motion"
 import { FaTrophy, FaClock, FaHandshake, FaShieldAlt } from "react-icons/fa"
+import { useLanguage } from "../context/LanguageContext"
 
 export default function WhyChooseUs() {
+  const { t } = useLanguage()
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -21,28 +24,7 @@ export default function WhyChooseUs() {
     },
   }
 
-  const reasons = [
-    {
-      icon: FaTrophy,
-      title: "Quality Excellence",
-      description: "Award-winning construction standards and premium materials",
-    },
-    {
-      icon: FaClock,
-      title: "On-Time Delivery",
-      description: "Guaranteed project completion within agreed timelines",
-    },
-    {
-      icon: FaHandshake,
-      title: "Customer Support",
-      description: "Dedicated support team available throughout your project",
-    },
-    {
-      icon: FaShieldAlt,
-      title: "Certified & Insured",
-      description: "Full certifications, licenses, and comprehensive insurance coverage",
-    },
-  ]
+  const icons = [FaTrophy, FaClock, FaHandshake, FaShieldAlt]
 
   return (
     <section className="py-24 bg-white">
@@ -55,10 +37,10 @@ export default function WhyChooseUs() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-primary-600 font-semibold text-lg mb-4">Why Choose Us</p>
-          <h2 className="section-title">Your Trusted Construction Partner</h2>
+          <p className="text-primary-600 font-semibold text-lg mb-4">{t.whyChooseUs.badge}</p>
+          <h2 className="section-title">{t.whyChooseUs.title}</h2>
           <p className="section-subtitle">
-            Discover what makes Al-Ridwan the preferred choice for premium construction
+            {t.whyChooseUs.subtitle}
           </p>
         </motion.div>
 
@@ -70,8 +52,8 @@ export default function WhyChooseUs() {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
-          {reasons.map((reason, index) => {
-            const Icon = reason.icon
+          {t.whyChooseUs.reasons.map((reason, index) => {
+            const Icon = icons[index]
             return (
               <motion.div
                 key={index}
@@ -115,13 +97,10 @@ export default function WhyChooseUs() {
           className="mt-16 bg-primary-600 rounded-2xl p-12 text-center shadow-lg"
         >
           <h3 className="text-3xl font-serif font-bold mb-4 text-white">
-            Commitment to Excellence
+            {t.whyChooseUs.ctaTitle}
           </h3>
           <p className="text-primary-100 text-lg max-w-3xl mx-auto leading-relaxed">
-            At Al-Ridwan, we don't just build structures—we create lasting legacies.
-            Every project reflects our dedication to innovation, sustainability, and
-            client satisfaction. With our experienced team and proven methodology, we
-            transform visions into reality with precision and care.
+            {t.whyChooseUs.ctaText}
           </p>
         </motion.div>
       </div>

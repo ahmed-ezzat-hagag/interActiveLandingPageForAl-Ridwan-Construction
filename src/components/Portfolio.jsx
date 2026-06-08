@@ -1,9 +1,11 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { FaFilter } from "react-icons/fa"
+import { useLanguage } from "../context/LanguageContext"
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("all")
+  const { t, lang } = useLanguage()
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -24,52 +26,22 @@ export default function Portfolio() {
     },
   }
 
-  const categories = ["all", "commercial", "residential", "renovation"]
+  const projectImages = ["🏢", "🏛️", "🏗️", "🏢", "🏘️", "🏬"]
 
-  const projects = [
-    {
-      id: 1,
-      title: "Modern Office Complex",
-      category: "commercial",
-      image: "🏢",
-      location: "Downtown District",
-    },
-    {
-      id: 2,
-      title: "Luxury Residential Tower",
-      category: "residential",
-      image: "🏛️",
-      location: "Premium Zone",
-    },
-    {
-      id: 3,
-      title: "Heritage Renovation",
-      category: "renovation",
-      image: "🏗️",
-      location: "Historic Area",
-    },
-    {
-      id: 4,
-      title: "Tech Park Development",
-      category: "commercial",
-      image: "🏢",
-      location: "Business District",
-    },
-    {
-      id: 5,
-      title: "Contemporary Apartments",
-      category: "residential",
-      image: "🏘️",
-      location: "Suburban Area",
-    },
-    {
-      id: 6,
-      title: "Mall Refurbishment",
-      category: "renovation",
-      image: "🏬",
-      location: "City Center",
-    },
+  const categories = [
+    { key: "all", label: t.portfolio.all },
+    { key: "commercial", label: t.portfolio.commercial },
+    { key: "residential", label: t.portfolio.residential },
+    { key: "renovation", label: t.portfolio.renovation },
   ]
+
+  const projects = t.portfolio.projects.map((p, i) => ({
+    id: i + 1,
+    title: p.title,
+    category: ["commercial", "residential", "renovation", "commercial", "residential", "renovation"][i],
+    image: projectImages[i],
+    location: p.location,
+  }))
 
   const filteredProjects =
     activeCategory === "all"
@@ -87,10 +59,10 @@ export default function Portfolio() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-primary-600 font-semibold text-lg mb-4">Portfolio</p>
-          <h2 className="section-title">Featured Projects</h2>
+          <p className="text-primary-600 font-semibold text-lg mb-4">{t.portfolio.badge}</p>
+          <h2 className="section-title">{t.portfolio.title}</h2>
           <p className="section-subtitle">
-            Explore our portfolio of exceptional construction projects
+            {t.portfolio.subtitle}
           </p>
         </motion.div>
 
@@ -104,18 +76,18 @@ export default function Portfolio() {
         >
           {categories.map((cat) => (
             <motion.button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`flex items-center space-x-2 px-6 py-2 rounded-full font-semibold transition-all ${
-                activeCategory === cat
+              key={cat.key}
+              onClick={() => setActiveCategory(cat.key)}
+              className={`flex items-center space-x-2 rtl:space-x-reverse px-6 py-2 rounded-full font-semibold transition-all ${
+                activeCategory === cat.key
                   ? "bg-primary-600 text-white shadow-md"
                   : "bg-white border-2 border-[#E2E8F0] text-[#475569] hover:border-primary-600 hover:text-primary-600"
               }`}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {cat === "all" && <FaFilter />}
-              <span className="capitalize">{cat}</span>
+              {cat.key === "all" && <FaFilter />}
+              <span>{cat.label}</span>
             </motion.button>
           ))}
         </motion.div>
@@ -156,11 +128,11 @@ export default function Portfolio() {
                     {project.title}
                   </h3>
                   <motion.button
-                    whileHover={{ x: 5 }}
-                    className="text-primary-600 font-semibold text-sm flex items-center space-x-2"
+                    whileHover={{ x: lang === "ar" ? -5 : 5 }}
+                    className="text-primary-600 font-semibold text-sm flex items-center space-x-2 rtl:space-x-reverse"
                   >
-                    <span>View Project</span>
-                    <span>→</span>
+                    <span>{t.portfolio.viewProject}</span>
+                    <span>{lang === "ar" ? "←" : "→"}</span>
                   </motion.button>
                 </div>
               </motion.div>
@@ -176,7 +148,7 @@ export default function Portfolio() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <button className="btn-primary">View Complete Portfolio</button>
+          <button className="btn-primary">{t.portfolio.viewAll}</button>
         </motion.div>
       </div>
     </section>

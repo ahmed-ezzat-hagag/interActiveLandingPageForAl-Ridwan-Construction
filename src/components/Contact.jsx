@@ -1,8 +1,10 @@
 import { motion } from "framer-motion"
 import { useState } from "react"
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa"
+import { useLanguage } from "../context/LanguageContext"
 
 export default function Contact() {
+  const { t } = useLanguage()
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -47,23 +49,23 @@ export default function Contact() {
   const contactInfo = [
     {
       icon: FaPhone,
-      title: "Phone",
-      details: "+971 XX XXX XXXX",
+      title: t.contact.phone,
+      details: t.contact.phoneDetails,
     },
     {
       icon: FaEnvelope,
-      title: "Email",
-      details: "info@alridwan.com",
+      title: t.contact.email,
+      details: t.contact.emailDetails,
     },
     {
       icon: FaMapMarkerAlt,
-      title: "Address",
-      details: "Dubai, UAE",
+      title: t.contact.address,
+      details: t.contact.addressDetails,
     },
     {
       icon: FaClock,
-      title: "Hours",
-      details: "Mon-Fri: 9AM-6PM",
+      title: t.contact.hours,
+      details: t.contact.hoursDetails,
     },
   ]
 
@@ -78,10 +80,10 @@ export default function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-primary-600 font-semibold text-lg mb-4">Get in Touch</p>
-          <h2 className="section-title">Contact Us Today</h2>
+          <p className="text-primary-600 font-semibold text-lg mb-4">{t.contact.badge}</p>
+          <h2 className="section-title">{t.contact.title}</h2>
           <p className="section-subtitle">
-            Let's discuss your construction project and bring your vision to life
+            {t.contact.subtitle}
           </p>
         </motion.div>
 
@@ -97,7 +99,7 @@ export default function Contact() {
           <motion.div variants={containerVariants} className="space-y-6">
             <motion.div variants={itemVariants}>
               <h3 className="text-2xl font-serif font-bold mb-8 text-[#0F172A]">
-                Contact Information
+                {t.contact.infoTitle}
               </h3>
             </motion.div>
 
@@ -107,7 +109,7 @@ export default function Contact() {
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="flex items-start space-x-4 bg-white border border-[#E2E8F0] rounded-xl p-6 shadow-sm hover:shadow-md transition-all"
+                  className="flex items-start space-x-4 rtl:space-x-reverse bg-white border border-[#E2E8F0] rounded-xl p-6 shadow-sm hover:shadow-md transition-all"
                 >
                   <div className="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center flex-shrink-0">
                     <Icon className="text-primary-600 text-xl" />
@@ -140,7 +142,7 @@ export default function Contact() {
           {/* Contact Form */}
           <motion.div variants={itemVariants} className="bg-white border border-[#E2E8F0] rounded-xl p-8 shadow-sm">
             <h3 className="text-2xl font-serif font-bold mb-6 text-[#0F172A]">
-              Send us a Message
+              {t.contact.formTitle}
             </h3>
 
             {submitted && (
@@ -149,14 +151,14 @@ export default function Contact() {
                 animate={{ opacity: 1, y: 0 }}
                 className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl text-green-700"
               >
-                ✓ Thank you! We'll get back to you soon.
+                {t.contact.successMessage}
               </motion.div>
             )}
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-semibold text-[#0F172A] mb-2">
-                  Full Name
+                  {t.contact.nameLabel}
                 </label>
                 <input
                   type="text"
@@ -165,13 +167,13 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-white border border-[#E2E8F0] rounded-xl text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-50 transition-all"
-                  placeholder="Your name"
+                  placeholder={t.contact.namePlaceholder}
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-[#0F172A] mb-2">
-                  Email Address
+                  {t.contact.emailLabel}
                 </label>
                 <input
                   type="email"
@@ -180,13 +182,13 @@ export default function Contact() {
                   onChange={handleChange}
                   required
                   className="w-full px-4 py-3 bg-white border border-[#E2E8F0] rounded-xl text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-50 transition-all"
-                  placeholder="your@email.com"
+                  placeholder={t.contact.emailPlaceholder}
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-[#0F172A] mb-2">
-                  Phone Number
+                  {t.contact.phoneLabel}
                 </label>
                 <input
                   type="tel"
@@ -194,13 +196,13 @@ export default function Contact() {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-white border border-[#E2E8F0] rounded-xl text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-50 transition-all"
-                  placeholder="+971 XX XXX XXXX"
+                  placeholder={t.contact.phonePlaceholder}
                 />
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-[#0F172A] mb-2">
-                  Project Type
+                  {t.contact.projectLabel}
                 </label>
                 <select
                   name="project"
@@ -208,17 +210,17 @@ export default function Contact() {
                   onChange={handleChange}
                   className="w-full px-4 py-3 bg-white border border-[#E2E8F0] rounded-xl text-[#0F172A] focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-50 transition-all"
                 >
-                  <option value="">Select project type</option>
-                  <option value="commercial">Commercial Building</option>
-                  <option value="residential">Residential Project</option>
-                  <option value="renovation">Renovation</option>
-                  <option value="other">Other</option>
+                  <option value="">{t.contact.projectPlaceholder}</option>
+                  <option value="commercial">{t.contact.projectCommercial}</option>
+                  <option value="residential">{t.contact.projectResidential}</option>
+                  <option value="renovation">{t.contact.projectRenovation}</option>
+                  <option value="other">{t.contact.projectOther}</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-sm font-semibold text-[#0F172A] mb-2">
-                  Message
+                  {t.contact.messageLabel}
                 </label>
                 <textarea
                   name="message"
@@ -227,7 +229,7 @@ export default function Contact() {
                   required
                   rows={5}
                   className="w-full px-4 py-3 bg-white border border-[#E2E8F0] rounded-xl text-[#0F172A] placeholder-[#94A3B8] focus:outline-none focus:border-primary-600 focus:ring-2 focus:ring-primary-50 transition-all resize-none"
-                  placeholder="Tell us about your project..."
+                  placeholder={t.contact.messagePlaceholder}
                 />
               </div>
 
@@ -237,7 +239,7 @@ export default function Contact() {
                 type="submit"
                 className="btn-primary w-full"
               >
-                Send Message
+                {t.contact.submit}
               </motion.button>
             </form>
           </motion.div>

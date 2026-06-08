@@ -7,8 +7,11 @@ import {
   FaPaintBrush,
   FaCity,
 } from "react-icons/fa"
+import { useLanguage } from "../context/LanguageContext"
 
 export default function Services() {
+  const { t } = useLanguage()
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -28,38 +31,7 @@ export default function Services() {
     },
   }
 
-  const services = [
-    {
-      icon: FaBuilding,
-      title: "Commercial Buildings",
-      description: "State-of-the-art commercial spaces designed for modern business",
-    },
-    {
-      icon: FaCity,
-      title: "Residential Projects",
-      description: "Premium residential complexes with luxury amenities",
-    },
-    {
-      icon: FaHammer,
-      title: "Renovation & Refurbishment",
-      description: "Transform existing structures with contemporary designs",
-    },
-    {
-      icon: FaRuler,
-      title: "Project Management",
-      description: "Expert oversight from planning to final completion",
-    },
-    {
-      icon: FaTools,
-      title: "Infrastructure",
-      description: "Robust infrastructure solutions for lasting impact",
-    },
-    {
-      icon: FaPaintBrush,
-      title: "Interior Design",
-      description: "Stunning interiors that combine beauty and functionality",
-    },
-  ]
+  const icons = [FaBuilding, FaCity, FaHammer, FaRuler, FaTools, FaPaintBrush]
 
   return (
     <section id="services" className="py-24 bg-white">
@@ -72,11 +44,10 @@ export default function Services() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-primary-600 font-semibold text-lg mb-4">Our Services</p>
-          <h2 className="section-title">Comprehensive Construction Solutions</h2>
+          <p className="text-primary-600 font-semibold text-lg mb-4">{t.services.badge}</p>
+          <h2 className="section-title">{t.services.title}</h2>
           <p className="section-subtitle">
-            We offer a complete range of construction and design services tailored
-            to your needs
+            {t.services.subtitle}
           </p>
         </motion.div>
 
@@ -88,8 +59,8 @@ export default function Services() {
           viewport={{ once: true }}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {services.map((service, index) => {
-            const Icon = service.icon
+          {t.services.list.map((service, index) => {
+            const Icon = icons[index]
             return (
               <motion.div
                 key={index}
@@ -117,8 +88,8 @@ export default function Services() {
                   </p>
 
                   {/* Hover Effect */}
-                  <div className="mt-6 inline-block text-primary-600 group-hover:translate-x-2 transition-transform">
-                    <span className="text-sm font-semibold">Learn More →</span>
+                  <div className="mt-6 inline-block text-primary-600 group-hover:translate-x-2 rtl:group-hover:-translate-x-2 transition-transform">
+                    <span className="text-sm font-semibold">{t.services.learnMore}</span>
                   </div>
                 </div>
               </motion.div>

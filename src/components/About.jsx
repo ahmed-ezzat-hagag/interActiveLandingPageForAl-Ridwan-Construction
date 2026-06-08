@@ -1,7 +1,10 @@
 import { motion } from "framer-motion"
 import { FaCheckCircle } from "react-icons/fa"
+import { useLanguage } from "../context/LanguageContext"
 
 export default function About() {
+  const { t } = useLanguage()
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -21,13 +24,6 @@ export default function About() {
     },
   }
 
-  const features = [
-    "State-of-the-art facilities and equipment",
-    "Certified and experienced engineering team",
-    "Sustainable and eco-friendly practices",
-    "On-time project delivery guarantee",
-  ]
-
   return (
     <section id="about" className="py-24 bg-[#F8FAFC]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,7 +41,7 @@ export default function About() {
                 <div className="text-center">
                   <div className="text-6xl mb-4">🏗️</div>
                   <p className="text-2xl font-serif text-[#0F172A] font-bold">
-                    Engineering Excellence
+                    {t.about.title}
                   </p>
                 </div>
               </div>
@@ -56,23 +52,20 @@ export default function About() {
           {/* Content */}
           <motion.div variants={containerVariants} className="space-y-8">
             <motion.div variants={itemVariants} className="space-y-4">
-              <p className="text-primary-600 font-semibold">About Us</p>
-              <h2 className="section-title">Excellence in Every Project</h2>
+              <p className="text-primary-600 font-semibold">{t.about.badge}</p>
+              <h2 className="section-title">{t.about.title}</h2>
               <p className="text-[#475569] leading-relaxed text-lg">
-                With over 15 years of experience in the construction industry,
-                Al-Ridwan has established itself as a leader in delivering
-                premium construction solutions. Our commitment to quality,
-                innovation, and client satisfaction sets us apart.
+                {t.about.description}
               </p>
             </motion.div>
 
             {/* Features List */}
             <motion.div variants={containerVariants} className="space-y-4">
-              {features.map((feature, index) => (
+              {t.about.features.map((feature, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  className="flex items-start space-x-4"
+                  className="flex items-start space-x-4 rtl:space-x-reverse"
                 >
                   <FaCheckCircle className="text-primary-600 mt-1 flex-shrink-0" />
                   <span className="text-[#475569]">{feature}</span>
@@ -87,15 +80,15 @@ export default function About() {
             >
               <div>
                 <div className="text-3xl font-bold text-primary-600">15+</div>
-                <p className="text-sm text-[#64748B]">Years Active</p>
+                <p className="text-sm text-[#64748B]">{t.about.statsYears}</p>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary-600">500+</div>
-                <p className="text-sm text-[#64748B]">Projects Done</p>
+                <p className="text-sm text-[#64748B]">{t.about.statsProjects}</p>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary-600">50+</div>
-                <p className="text-sm text-[#64748B]">Team Members</p>
+                <p className="text-sm text-[#64748B]">{t.about.statsTeam}</p>
               </div>
             </motion.div>
           </motion.div>
